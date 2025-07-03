@@ -1,13 +1,19 @@
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 
 from .mixins import Common, SlugMixin, AuditMixin
 from .sec_models import User, Instructor, Student
 
 
-class Category(Common, SlugMixin, AuditMixin):
+class Category(Common, SlugMixin, AuditMixin, MPTTModel):
     name = models.CharField(unique=True, max_length=80)
+    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+    
+    class MPTTMeta:
+        order_insertion_by = ['name']
     
     class Meta:
+        unique_together = (('name', 'parent'))
         verbose_name_plural = "Categories"
     
     def __str__(self):

@@ -41,6 +41,9 @@ class CategoryRepository(BaseRepository):
     def __init__(self):
         super().__init__(Category)
 
+    def get_all(self):
+        return self.model.objects.root_nodes().filter(is_active=True).prefetch_related('children').order_by('created_on')
+
 
 class UserRepository(BaseRepository):
     def __init__(self):
