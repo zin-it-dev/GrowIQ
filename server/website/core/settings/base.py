@@ -49,7 +49,8 @@ MPTT_ADMIN_LEVEL_INDENT = 20
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    "TEST_REQUEST_DEFAULT_FORMAT": "json"
 }
 
 MIDDLEWARE = [
