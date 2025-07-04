@@ -16,6 +16,14 @@ pytest
 pytest --cov --cov-report=xml
 ```
 
+## 🐋 Docker for Development and Testing
+
+```bash
+# Build the container
+# Install dependencies
+docker-compose up --build
+```
+
 ## Author
 
 Presented &copy; 2025 by [ZIN](https://github.com/zin-it-dev/).

@@ -46,11 +46,21 @@ INSTALLED_APPS = [
 
 MPTT_ADMIN_LEVEL_INDENT = 20
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = '/admin/login/'
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
-    "TEST_REQUEST_DEFAULT_FORMAT": "json"
+    "TEST_REQUEST_DEFAULT_FORMAT": "json",
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication'
+    ]
 }
 
 MIDDLEWARE = [
@@ -128,3 +138,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'apis.User'
 
 DEFAUTL_PASSWORD = "growiq@123"
+
+# Email
+
+# Development
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD ")
+
+# Sessions
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Cross-Site Scripting (XSS) Protection
+CSP_DEFAULT_SRC = ("'self'",)

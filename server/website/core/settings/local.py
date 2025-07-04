@@ -16,9 +16,7 @@ INTERNAL_IPS = [
     "127.0.0.1"
 ]
 
-ALLOWED_HOSTS = [
-    "127.0.0.1"
-]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'host.docker.internal']
 
 INSTALLED_APPS += [
     "debug_toolbar"
@@ -28,3 +26,5 @@ INSTALLED_APPS += [
 MIDDLEWARE += [
     "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

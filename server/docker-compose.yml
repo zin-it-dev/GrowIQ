@@ -1,0 +1,9 @@
+services:
+  web:
+    image: web
+    build: .
+    command: python website/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000

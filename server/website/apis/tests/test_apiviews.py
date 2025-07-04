@@ -8,7 +8,7 @@ pytestmark = pytest.mark.django_db
 
 
 class TestCategoryView:
-    url = reverse("apis:category-list")
+    url = reverse("category-list")
     
     def test_list_categories(self, client):
         CategoryFactory.create_batch(5)
